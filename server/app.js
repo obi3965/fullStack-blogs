@@ -13,7 +13,10 @@ connectDb()
 
 
 
+const auth = require('./routes/auth')
+const category = require('./routes/category')
 const user = require('./routes/user')
+
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,8 +26,9 @@ app.use(morgan("dev"));
 app.use(cors());
 
 
-
+app.use('/api', auth)
 app.use('/api', user)
+app.use('/api', category)
 
 const port = process.env.PORT;
 app.listen(port, () => {
