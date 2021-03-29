@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const { ObjectId } = mongoose.Schema
-
 const blogSchema = new mongoose.Schema({
     
     title: {
@@ -54,18 +53,8 @@ const blogSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    fViewed: {
-        type: Number,
-        default: 1
-    },
-    category: {
-        type:ObjectId,
-        ref:'Category',
-        required:true
-      },
-     
-    
- 
+   
+  
 },{ timestamps: true})
 
 

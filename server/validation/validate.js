@@ -29,12 +29,7 @@ exports.valdateSignIn = [
 ];
 
 
-exports.categoryCreateValidator = [
-    check('name')
-        .not()
-        .isEmpty()
-        .withMessage('Name is required')
-];
+
 
 
 exports.isRequestValidated = async = (req,res,next) =>{
