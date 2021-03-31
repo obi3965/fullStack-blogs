@@ -115,3 +115,82 @@ exports.remove = async (req,res) => {
         });
     }
 }
+
+
+exports.update = (req,res) => {
+  const slug = req.params.slug.toLowerCase();
+
+  Category.findOne({ slug:slug }).exec((err, oldBlog) => {
+      if (err) {
+          return res.status(400).json({
+              error: errorHandler(err)
+          });
+      }
+
+      let form = new formidable.IncomingForm();
+      form.keepExtensions = true;
+
+      form.parse(req, (err, fields, files) => {
+          if (err) {
+              return res.status(400).json({
+                  error: 'Image could not upload'
+              });
+          }
+
+          // let slugBeforeMerge = oldBlog.slug;
+          oldBlog = lodash.extend(oldBlog, fields);
+          // oldBlog.slug = slugBeforeMerge;
+
+          const { name, slug = slugify(name).toLowerCase() } = fields;
+
+          if (!name || !slug ) {
+              res.json({
+                message:'all fields is required'
+              })
+          }
+
+          
+
+          if (files.photo) {
+              if (files.photo.size > 10000000) {
+                  return res.status(400).json({
+                      error: 'Image should be less then 1mb in size'
+                  });
+              }
+              oldBlog.photo.data = fs.readFileSync(files.photo.path);
+              oldBlog.photo.contentType = files.photo.type;
+              
+          }
+
+          oldBlog.save((err, result) => {
+              if (err) {
+                  return res.status(400).json({
+                      error: errorHandler(err)
+                  });
+              }
+              // result.photo = undefined;
+              res.json(result);
+          });
+      });
+  });
+
+}
+
+
+exports.photo = async (req,res) => {
+  const slug = req.params.slug
+  try {
+    const catPhoto = await Category.findOne({slug}).select('photo')
+    if(!catPhoto){
+      return res.status(400).json({
+        error: errorHandler(err)
+    });
+    }
+    res.set('Content-Type', catPhoto.photo.contentType);
+            return res.send(catPhoto.photo.data);
+  } catch (error) {
+    res.status(500).json({
+      error:'server error, photo not found'
+    })
+  }
+}
