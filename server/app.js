@@ -16,6 +16,7 @@ connectDb()
 const auth = require('./routes/auth')
 const category = require('./routes/category')
 const user = require('./routes/user')
+const blog = require('./routes/blog')
 
 
 app.use(express.json());
@@ -29,6 +30,7 @@ app.use(cors());
 app.use('/api', auth)
 app.use('/api', user)
 app.use('/api', category)
+app.use('/api', blog)
 
 const port = process.env.PORT;
 app.listen(port, () => {
