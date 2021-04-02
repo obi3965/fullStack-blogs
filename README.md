@@ -22,3 +22,4 @@
 * [x] signin a user with token
 * [x] save token in cookies
 * [x] signout the user and remove token from cookies
+* [x] get the 
