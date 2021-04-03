@@ -76,3 +76,76 @@ exports.create = async(req,res) => {
       }
     });
 }
+
+
+
+exports.list = async (req,res) =>{
+  try {
+    const listAll = await Blog.find({})
+    .populate('categories', '_id name slug')
+    .populate('postedBy', '_id name userName')
+    .select('_id title slug desc text categories postedBy createdAt updatedAt')
+    if(!listAll) {
+      return res.json({
+        error: errorHandler(err)
+    });
+    }
+    res.status(200).json({
+      listAll
+    })
+  } catch (error) {
+    res.status(500).json({
+      error:'server error,blogs are not found'
+    })
+  }
+}
+
+
+exports.read = async(req,res) => {
+  const slug = req.params.slug
+  try {
+    const readBlog = await Blog.findOne({slug})
+    .populate('categories', '_id name slug')
+    .populate('postedBy', '_id name userName')
+    .select('_id title slug desc text categories postedBy createdAt updatedAt')
+    if(!readBlog) {
+      return res.json({
+        error: errorHandler(err)
+    });
+    }
+    res.status(200).json({
+      readBlog
+    })
+  } catch (error) {
+    res.status(500).json({
+      error:'server error,blog is not found'
+    })
+  }
+}
+
+
+exports.remove = (req,res) => {
+  const slug = req.params.slug
+    Blog.findOneAndRemove({ slug }).exec((err, data) => {
+        if (err) {
+            return res.json({
+                error: errorHandler(err)
+            });
+        }
+        res.json({
+            message: 'Blog deleted successfully'
+        });
+    });
+    
+}
+
+exports.all = async(req,res) => {
+  try {
+    const all = await Blog.find({}).select('-photo')
+    res.json(all)
+  } catch (error) {
+    res.status(500).json({
+      error:'server error'
+    })
+  }
+}
