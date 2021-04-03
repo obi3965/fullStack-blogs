@@ -149,3 +149,18 @@ exports.all = async(req,res) => {
     })
   }
 }
+
+
+exports.photo = async(req,res) => {
+  const slug = req.params.slug
+  try {
+    const blog = await Blog.findOne({slug}).select('photo')
+    res.set('Content-Type', blog.photo.contentType);
+    return res.send(blog.photo.data)
+   
+  } catch (error) {
+    res.status(500).json({
+      error:'server error'
+    })
+  }
+}
