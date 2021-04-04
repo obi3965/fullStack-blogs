@@ -65,7 +65,7 @@ exports.list = async (req, res) => {
     }
     res.json(categories);
   } catch (error) {
-    res.status(500).send("Server error");
+    res.status(500).json({error:"Server error"});
   }
 };
 
