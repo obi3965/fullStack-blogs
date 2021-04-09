@@ -4,7 +4,7 @@ const { requireSignIn, admin } = require('../controllers/authController')
 
 const router = express.Router()
 
-const { create, list, read, remove, all, photo } = require('../controllers/blogController')
+const { create, list, read, remove, all, photo, listRelated, listSearch } = require('../controllers/blogController')
 
 const { isRequestValidated } = require('../validation/validate')
 
@@ -14,5 +14,7 @@ router.get('/blogs', list)
 router.get('/blog/:slug', read);
 router.delete('/blog/:slug',isRequestValidated, requireSignIn, admin,remove )
 router.get('/blogs/all', all)
+router.get('/blogs/related/:slug', listRelated);
+router.get('/blogs/search', listSearch);
 router.get('/blogs/photo/:slug', photo)
 module.exports = router

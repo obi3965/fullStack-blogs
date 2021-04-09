@@ -56,7 +56,7 @@ exports.create = async (req, res) => {
 
 exports.list = async (req, res) => {
   try {
-    const categories = await Category.find({}).select('-photo')
+    const categories = await Category.find({})
     
     if (!categories) {
       return res.status(400).json({

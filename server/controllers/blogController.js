@@ -140,15 +140,62 @@ exports.remove = (req,res) => {
 }
 
 exports.all = async(req,res) => {
+  // try {
+  //   const all = await Blog.find({}).select('-photo')
+  //   res.json(all)
+  // } catch (error) {
+  //   res.status(500).json({
+  //     error:'server error'
+  //   })
+  // }
+  let order = req.query.order ? req.query.order : 'asc';
+  let sortBy = req.query.sortBy ? req.query.sortBy : '_id';
+  let limit = req.query.limit ? parseInt(req.query.limit) : 4;
   try {
-    const all = await Blog.find({}).select('-photo')
-    res.json(all)
+    const blogs = await Blog.find()
+        .select("-photo")
+        .populate("category")
+        .sort([[sortBy, order]])
+        .limit(limit)
+        if(!blogs){
+          return res.status(400).json({
+            error: 'blogs not found'
+        });
+        }
+        res.json(
+             
+            blogs 
+          );
+  } catch (error) {
+    res.status(500).json({
+          error:'server error'
+        })
+  }
+}
+
+
+exports.listRelated = async (req, res) => {
+  let limit = req.query.limit ? parseInt(req.query.limit) : 4;
+  const { slug, categories } = req.body;
+  try {
+  const blogs = await Blog.find({ slug: { $ne: slug }, categories: { $in: categories } })
+
+  .limit(limit)
+  .populate('postedBy', '_id name userName')
+  .select('title slug text desc postedBy createdAt updatedAt')
+  if(!blogs){
+    return res.status(400).json({
+        error: 'products not found'
+    })
+}
+res.json({blogs:blogs})
   } catch (error) {
     res.status(500).json({
       error:'server error'
     })
   }
-}
+
+};
 
 
 exports.photo = async(req,res) => {
@@ -164,3 +211,27 @@ exports.photo = async(req,res) => {
     })
   }
 }
+
+
+
+
+
+exports.listSearch = (req, res) => {
+  
+  const { search } = req.query;
+  if (search) {
+      Blog.find(
+          {
+              $or: [{ title: { $regex: search, $options: 'i' } }, { body: { $regex: search, $options: 'i' } }]
+          },
+          (err, blogs) => {
+              if (err) {
+                  return res.status(400).json({
+                      error: errorHandler(err)
+                  });
+              }
+              res.json(blogs);
+          }
+      ).select('-photo -body');
+  }
+};
