@@ -1,0 +1,61 @@
+.each-slide  {
+    background-size: cover;
+    height: 70vh;
+    position: relative;
+    background-position: center;
+    background-repeat:no-repeat ;
+    background-size: cover;
+    background-image: linear-gradient(rgba(22,41,61,0.8),rgba(22,41,61,0.8)),
+    url('../image/shop-slider-rev-img-1.jpg');
+   /* width: 100%; */
+  }
+  .banner-title{ 
+    position:absolute;
+    top:32%;
+    bottom:0;
+    left:12%;
+    right:0;
+    /* width: 400px; */
+  }
+  
+.each-slide h1{
+    /* color: #4fd675 !important; */
+    text-transform: capitalize;
+     font-family: "Playfair Display", serif;  
+    font-size: 74px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    z-index: 999;
+    color: #E7272D;
+    
+}
+.desc p{
+    text-transform: capitalize;
+     font-family: "Playfair Display", serif;  
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 999;
+    color: #Fff; 
+}
+
+.banner-title a{
+    border: 1px solid #E7272D;
+    padding: 11px 50px;
+    background-color: #E7272D;
+    color: #Fff;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all ease-in-out .4s;
+    border-radius: 25px;
+    text-transform: capitalize;
+    
+}
+
+.banner-title a:hover{
+    border: 1px solid #E7272D;
+    background-color: #fff;
+    color: #E7272D;
+    
+}

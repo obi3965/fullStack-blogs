@@ -1,0 +1,50 @@
+.catLink::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 4px;
+    background-color: #244263 ;
+    transition: all ease-in .3s;
+}
+
+.catLink:hover::after{
+    width: 100%;
+    transition:all ease-in .3s;
+}
+.catBox img{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+}
+.catBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-direction: column;
+}
+.catBox a{
+    color: #244263;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-size: 17px;
+    font-weight: 600;
+    /* font-family: "Playfair Display", serif; */
+    text-align: center !important;
+    text-decoration: none;
+}
+.cat-title h1{
+    text-align: center;
+    margin-top: 20px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-size: 40px;
+    font-weight: 800;
+    font-family: "Playfair Display", serif;
+    color: #244263;
+}
+.cat-underline{
+   border-bottom: 4px dotted #E7272D;
+   margin: auto;
+   width: 20%;
+}

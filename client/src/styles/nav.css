@@ -5,16 +5,32 @@
     list-style: none;
 }
 .navbar-brand img{
-    height: 40px;
+    height: 60px; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 42px;
+    
 }
 .navbar{
     background-color: #fff !important;
-    /* border-bottom: 1px solid #22eaaa; */
+    
 }
 .nav-link{
-    color: #000 !important;
+    color:#244263 !important;
     font-size: 17px;
     text-transform: capitalize;
-    opacity: .88;
     letter-spacing: 1px;
+
+}
+.nav-link::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 4px;
+    background-color: #E7272D;
+    transition: all ease-in .3s;
+}
+.nav-link:hover::after{
+    width: 100%;
+    transition:all ease-in .3s;
 }

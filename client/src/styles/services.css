@@ -1,0 +1,79 @@
+section{
+	padding: 60px 0;
+    /* background-image: url('../image/footer-bg-img.jpg');
+    height: auto; */
+}
+section .section-title{
+	text-align:center;
+	color:#244263 ;
+	margin-bottom:50px;
+    text-transform: capitalize;
+    font-family: "Playfair Display", serif;  
+   font-size: 40px;
+   font-weight: 800;
+   letter-spacing: 1px;
+}
+#what-we-do{
+	background:#ffffff;
+}
+.card{
+  border: none !important;  
+  box-shadow: 0px 0 5px 0px rgba(0,0,0,.2);
+  padding: 1rem !important;
+}
+.card-title{
+    text-align: center;
+    color: #244263;
+    text-transform: capitalize;
+    font-size: 24px;
+    font-family: "Playfair Display", serif;  
+}
+
+
+#what-we-do .card .card-block{
+	padding-left: 50px;
+    position: relative;
+}
+ .card .card-block a{
+	color: #E7272D !important;
+	font-weight:700;
+	text-decoration:none;
+}
+#what-we-do .card .card-block a i{
+	display:none;
+	
+}
+#what-we-do .card:hover .card-block a i{
+	display:inline-block;
+	font-weight:700;
+	
+}
+#what-we-do .card .card-block:before{
+	font-family: FontAwesome;
+    position: absolute;
+    font-size: 39px;
+    color: #007b5e;
+    left: 0;
+	-webkit-transition: -webkit-transform .2s ease-in-out;
+    transition:transform .2s ease-in-out;
+}
+#what-we-do .card .block-1:before{
+    content: "\f0e7";
+}
+#what-we-do .card .block-2:before{
+    content: "\f0eb";
+}
+#what-we-do .card .block-3:before{
+    content: "\f00c";
+}
+#what-we-do .card .block-4:before{
+    content: "\f209";
+}
+
+#what-we-do .card:hover .card-block:before{
+	-webkit-transform: rotate(360deg);
+	transform: rotate(360deg);	
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}

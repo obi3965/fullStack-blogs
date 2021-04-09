@@ -6,10 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import Routes from './Routes';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <App />
     <Routes/>
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 );
 

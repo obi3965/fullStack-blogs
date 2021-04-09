@@ -1,0 +1,48 @@
+.midbanner{
+    background-image:linear-gradient(rgba(22,41,61,0.8),rgba(22,41,61,0.8)),
+     url('https://images.pexels.com/photos/5929763/pexels-photo-5929763.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 55vh;
+    margin-top: 45px;
+    position: relative;
+}
+.midbanner-items{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.midbanner-items h1{
+    text-transform: capitalize;
+    font-family: "Playfair Display", serif;  
+   font-size: 74px;
+   font-weight: 800;
+   letter-spacing: 1px;
+   color: #fff;
+   z-index: 10;
+}
+.midbanner-btn{
+   margin-top: 40px; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.midbanner-btn a{
+    background-color: #E7272D;
+    padding: 11px 50px;
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 18px;
+    text-transform: capitalize;
+    text-decoration: none;
+    transition: all ease-in-out .4s;
+}
+.midbanner-btn a:hover{
+    border: 1px solid #E7272D;
+    background-color: #fff;
+    color: #E7272D;
+    
+}
